@@ -1,0 +1,24 @@
+# Logs
+*.log
+npm-debug.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Test coverage/operation
+coverage
+.vscode
+**/runtime/*.svg
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+#IDE Stuff
+**/.idea
+
+#OS STUFF
+.DS_Store
+.tmp
