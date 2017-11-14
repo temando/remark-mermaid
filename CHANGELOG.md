@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## Unreleased
 
-Nil.
+- Made executing [mermaid CLI](https://github.com/mermaidjs/mermaid.cli) from within plugin more robust.
 
 ## [v0.1.0] - 2017-11-10
 
