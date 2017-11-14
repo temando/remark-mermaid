@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs-extra');
 const path = require('path');
+const which = require('npm-which')(__dirname);
 const execSync = require('child_process').execSync;
 
 const PLUGIN_NAME = 'remark-mermaid';
@@ -15,6 +16,7 @@ const PLUGIN_NAME = 'remark-mermaid';
  */
 function render(source, destination) {
   const unique = crypto.createHmac('sha1', PLUGIN_NAME).update(source).digest('hex');
+  const mmdcExecutable = which.sync('mmdc');
   const mmdPath = path.join(destination, `${unique}.mmd`);
   const svgFilename = `${unique}.svg`;
   const svgPath = path.join(destination, svgFilename);
@@ -23,7 +25,7 @@ function render(source, destination) {
   fs.outputFileSync(mmdPath, source);
 
   // Invoke mermaid.cli
-  execSync(`mmdc -i ${mmdPath} -o ${svgPath} -b transparent`);
+  execSync(`${mmdcExecutable} -i ${mmdPath} -o ${svgPath} -b transparent`);
 
   // Clean up temporary file
   fs.removeSync(mmdPath);
