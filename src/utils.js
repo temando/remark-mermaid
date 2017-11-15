@@ -43,11 +43,12 @@ function render(source, destination) {
  */
 function renderFromFile(inputFile, destination) {
   const unique = crypto.createHmac('sha1', PLUGIN_NAME).update(inputFile).digest('hex');
+  const mmdcExecutable = which.sync('mmdc');
   const svgFilename = `${unique}.svg`;
   const svgPath = path.join(destination, svgFilename);
 
   // Invoke mermaid.cli
-  execSync(`mmdc -i ${inputFile} -o ${svgPath} -b transparent`);
+  execSync(`${mmdcExecutable} -i ${inputFile} -o ${svgPath} -b transparent`);
 
   return `./${svgFilename}`;
 }

@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## Unreleased
 
-- Nil
+- Made earlier fix available to more code paths.
 
 ## [v0.1.1] - 2017-11-14
 
