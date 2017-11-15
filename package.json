@@ -1,6 +1,6 @@
 {
   "name": "remark-mermaid",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A remark plugin for Markdown that replaces `mermaid` graphs with rendered SVGs.",
   "license": "MIT",
   "keywords": [
