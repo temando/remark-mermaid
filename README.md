@@ -62,8 +62,7 @@ remark()
   .use(mermaid)
   .process(example, function (err, file) {
     if (err) throw err;
-    console.log(String(file))
-    })
+    console.log(String(file));
   });
 ```
 
@@ -93,7 +92,6 @@ remark()
   .process(example, function (err, file) {
     if (err) throw err;
     vfile.writeSync({ path: example.destinationFilePath });
-    })
   });
 ```
 
