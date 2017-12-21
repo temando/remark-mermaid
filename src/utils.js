@@ -69,8 +69,24 @@ function getDestinationDir(vFile) {
   return vFile.dirname;
 }
 
+/**
+ * Given the contents, returns a MDAST representation of a HTML node.
+ *
+ * @param  {string} contents
+ * @return {object}
+ */
+function createMermaidDiv(contents) {
+  return {
+    type: 'html',
+    value: `<div class="mermaid">
+  ${contents}
+</div>`,
+  };
+}
+
 module.exports = {
+  createMermaidDiv,
+  getDestinationDir,
   render,
   renderFromFile,
-  getDestinationDir,
 };

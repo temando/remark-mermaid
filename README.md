@@ -4,14 +4,14 @@
 [![Travis CI](https://img.shields.io/travis/temando/remark-mermaid.svg)](https://travis-ci.org/temando/remark-mermaid)
 [![MIT License](https://img.shields.io/github/license/temando/remark-mermaid.svg)](https://en.wikipedia.org/wiki/MIT_License)
 
-Replaces [`mermaid`](https://mermaidjs.github.io/) graphs with rendered SVGs.
+Replaces graphs defined in [`mermaid`](https://mermaidjs.github.io/) with rendered SVGs.
 
 You might also like [`remark-graphviz`](https://www.npmjs.com/package/remark-graphviz).
 
 ## Installation
 
 ```sh
-$ npm install remark-mermaid
+$ npm install remark-mermaid mermaid.cli
 ```
 
 ## Usage
@@ -36,7 +36,13 @@ graph LR
 
 See this project's [fixtures](test/fixtures) for more examples.
 
+### Options
+
+- `simple`: A boolean option which determines whether the plugin will generate SVG, or simply wrap your Mermaid graph in an `<div class="mermaid">` element which [mermaidjs][mermaidjs] can understand.
+
 ## Example
+
+### SVG Generation
 
 Given a file, `example.md`, which contains the following Markdown:
 
@@ -96,3 +102,36 @@ remark()
 ```
 
 This allows you process files from one directory, and save the results to another.
+
+### Simple mode
+
+If the plugin is enabling graphs to be processed by [mermaidjs][mermaidjs],
+enable `simple` mode like follows:
+
+```js
+var vfile = require('to-vfile');
+var remark = require('remark');
+var mermaid = require('remark-mermaid');
+
+var example = vfile.readSync('example.md');
+
+remark()
+  .use(mermaid, { simple: true })
+  .process(example, function (err, file) {
+    if (err) throw err;
+    console.log(String(file));
+  });
+```
+
+This will result in the following Markdown output:
+
+```md
+# mermaid code block
+
+<div class="mermaid">
+  graph LR
+    Start --> Stop
+</div>
+```
+
+[mermaidjs](https://mermaidjs.github.io/usage.html)
