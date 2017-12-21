@@ -134,10 +134,12 @@ function visitCodeBlock(ast, vFile, isSimple) {
 
 /**
  * If links have a title attribute called `mermaid:`, follow the link and
- * generate the graph. Replace the link with the link to the generated graph.
+ * depending on `isSimple`, either generate and link to the graph, or simply
+ * wrap the graph contents in a div.
  *
  * @param {object}  ast
  * @param {vFile}   vFile
+ * @param {boolean} isSimple
  * @return {function}
  */
 function visitLink(ast, vFile, isSimple) {
@@ -150,10 +152,12 @@ function visitLink(ast, vFile, isSimple) {
 
 /**
  * If images have a title attribute called `mermaid:`, follow the link and
- * generate the graph. Replace the link with the link to the generated graph.
+ * depending on `isSimple`, either generate and link to the graph, or simply
+ * wrap the graph contents in a div.
  *
  * @param {object}  ast
  * @param {vFile}   vFile
+ * @param {boolean} isSimple
  * @return {function}
  */
 function visitImage(ast, vFile, isSimple) {

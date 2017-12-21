@@ -4,7 +4,10 @@
 [![Travis CI](https://img.shields.io/travis/temando/remark-mermaid.svg)](https://travis-ci.org/temando/remark-mermaid)
 [![MIT License](https://img.shields.io/github/license/temando/remark-mermaid.svg)](https://en.wikipedia.org/wiki/MIT_License)
 
-Replaces graphs defined in [`mermaid`](https://mermaidjs.github.io/) with rendered SVGs.
+Replaces fenced code blocks in mermaid format with:
+
+- Links to rendered SVG files of the graph (default mode).
+- Mermaid-formatted code wrapped in div tags for rendering by mermaidjs (simple mode).
 
 You might also like [`remark-graphviz`](https://www.npmjs.com/package/remark-graphviz).
 
@@ -38,7 +41,7 @@ See this project's [fixtures](test/fixtures) for more examples.
 
 ### Options
 
-- `simple`: A boolean option which determines whether the plugin will generate SVG, or simply wrap your Mermaid graph in an `<div class="mermaid">` element which [mermaidjs][mermaidjs] can understand.
+- `simple`: when set to `true`, plugin will wrap mermaid graphs in an `<div class="mermaid">` element instead of generating an SVG. Defaults to `false`.
 
 ## Example
 
@@ -105,8 +108,7 @@ This allows you process files from one directory, and save the results to anothe
 
 ### Simple mode
 
-If the plugin is enabling graphs to be processed by [mermaidjs][mermaidjs],
-enable `simple` mode like follows:
+The following code sample enables simple mode:
 
 ```js
 var vfile = require('to-vfile');
