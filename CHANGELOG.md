@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased][]
 
+## [0.2.0][] - 2018-01-08
+
 ### Added
 
 - Added `simple` mode, which enables authors to use the plugin simply to create HTML that [mermaidjs](https://mermaidjs.github.io/usage.html) can understand.
@@ -30,7 +32,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 Initial release of `remark-mermaid` plugin.
 
-[Unreleased]: https://github.com/temando/remark-mermaid/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/temando/remark-mermaid/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/temando/remark-mermaid/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/temando/remark-mermaid/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/temando/remark-mermaid/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/temando/remark-mermaid/tree/v0.1.0
