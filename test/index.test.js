@@ -40,6 +40,17 @@ describe('remark-mermaid', () => {
     expect(vfile.messages[0].message).toBe('mermaid code block replaced with graph');
   });
 
+  it('can handle code blocks to svg string', () => {
+    const srcFile = `${fixturesDir}/code-block.md`;
+    const destFile = `${runtimeDir}/code-block.md`;
+    const vfile = toVFile.readSync(srcFile);
+    addMetadata(vfile, destFile);
+
+    const result = remark().use(mermaid, { asString: true }).processSync(vfile).toString();
+    expect(result).toMatch(/<svg id="[\s\S]*<\/svg>/);
+    expect(vfile.messages[0].message).toBe('mermaid code block replaced with graph');
+  });
+
   it('can handle mermaid images', () => {
     const srcFile = `${fixturesDir}/image-mermaid.md`;
     const destFile = `${runtimeDir}/image-mermaid.md`;
