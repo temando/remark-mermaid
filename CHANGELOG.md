@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased][]
 
+### Changed
+
+- Replaced `npm-which` dependency with `which`, which has a smaller footprint.
+
 ## [0.2.0][] - 2018-01-08
 
 ### Added
