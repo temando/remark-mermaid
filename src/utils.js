@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs-extra');
 const path = require('path');
-const which = require('npm-which')(__dirname);
+const which = require('which');
 const execSync = require('child_process').execSync;
 
 const PLUGIN_NAME = 'remark-mermaid';
