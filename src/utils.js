@@ -31,7 +31,7 @@ function render(source, destination, asString) {
   fs.removeSync(mmdPath);
 
   if (asString) {
-    const string = fs.readFileSync(svgPath).toString();
+    const string = fs.readFileSync(svgPath, { encoding: 'utf-8' });
     fs.removeSync(svgPath);
     return string;
   }
@@ -40,11 +40,11 @@ function render(source, destination, asString) {
 }
 
 /**
- * Accepts the `source` of the graph as a string, and render an SVG using
+ * Accepts the path `inputFile` to the graph, and render an SVG using
  * mermaid.cli. Returns the path to the rendered SVG.
  *
+ * @param  {string} inputFile
  * @param  {string} destination
- * @param  {string} source
  * @return {string}
  */
 function renderFromFile(inputFile, destination) {
