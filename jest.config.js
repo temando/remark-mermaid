@@ -5,7 +5,6 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '/node_modules/',
   ],
-  mapCoverage: true,
   moduleDirectories: [
     'node_modules',
   ],
