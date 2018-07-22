@@ -3,8 +3,9 @@ const path = require('path');
 const toVFile = require('to-vfile');
 const { render, renderFromFile, getDestinationDir } = require('../src/utils');
 
+const isTravis = 'TRAVIS' in process.env && 'CI' in process.env;
 const fixturesDir = path.join(__dirname, '/fixtures');
-const runtimeDir = path.join(__dirname, '/runtime');
+const runtimeDir = isTravis ? '/tmp' : path.join(__dirname, '/runtime');
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 

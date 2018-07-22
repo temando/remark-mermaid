@@ -5,8 +5,9 @@ const toVFile = require('to-vfile');
 const unified = require('unified');
 const mermaid = require('../src/');
 
+const isTravis = 'TRAVIS' in process.env && 'CI' in process.env;
 const fixturesDir = path.join(__dirname, '/fixtures');
-const runtimeDir = path.join(__dirname, '/runtime');
+const runtimeDir = isTravis ? '/tmp' : path.join(__dirname, '/runtime');
 const remark = unified().use(parse).use(stringify).freeze();
 
 // Utility function to add metdata to a vFile.
@@ -47,8 +48,8 @@ describe('remark-mermaid', () => {
     addMetadata(vfile, destFile);
 
     const result = remark().use(mermaid, { asString: true }).processSync(vfile).toString();
-    expect(result).toMatch(/<svg id="[\s\S]*<\/svg>/);
     expect(vfile.messages[0].message).toBe('mermaid code block replaced with graph');
+    expect(result).toMatch(/<svg id="[\s\S]*<\/svg>/);
   });
 
   it('can handle mermaid images', () => {
