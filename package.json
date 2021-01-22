@@ -1,5 +1,5 @@
 {
-  "name": "remark-mermaid",
+  "name": "@dendronhq/remark-mermaid",
   "version": "0.2.0",
   "description": "A remark plugin for Markdown that replaces `mermaid` graphs with rendered SVGs.",
   "license": "MIT",
@@ -30,9 +30,6 @@
     "unified": "^6.1.5",
     "version-changelog": "^2.1.0",
     "vfile": "^2.2.0"
-  },
-  "peerDependencies": {
-    "mermaid.cli": "^0.3.1"
   },
   "scripts": {
     "lint": "$(npm bin)/eslint src",
