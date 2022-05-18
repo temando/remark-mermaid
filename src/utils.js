@@ -76,6 +76,11 @@ function getDestinationDir(vFile) {
  * @return {object}
  */
 function createMermaidDiv(contents) {
+  // `<` and `>` characters are used in some mermaid graphs, but rehype will
+  // break them to avoid HTML injection. We have to escape them, thankfully
+  // mermaid recognizes the escaped versions.
+  contents = contents.replace(/[<]/g, "&lt;").replace(/[>]/g, "&gt;");
+
   return {
     type: 'html',
     value: `<div class="mermaid">
