@@ -1,4 +1,4 @@
-const fs = require('fs-extra');
+// const fs = require('fs-extra');
 const visit = require('unist-util-visit');
 const utils = require('./utils');
 
@@ -66,16 +66,16 @@ function replaceLinkWithEmbedded(node, index, parent, vFile) {
     return node;
   }
 
-  try {
-    const value = fs.readFileSync(`${vFile.dirname}/${url}`, { encoding: 'utf-8' });
+  // try {
+  //   const value = fs.readFileSync(`${vFile.dirname}/${url}`, { encoding: 'utf-8' });
 
-    newNode = createMermaidDiv(value);
-    parent.children.splice(index, 1, newNode);
-    vFile.info('mermaid link replaced with div', position, PLUGIN_NAME);
-  } catch (error) {
-    vFile.message(error, position, PLUGIN_NAME);
-    return node;
-  }
+  //   newNode = createMermaidDiv(value);
+  //   parent.children.splice(index, 1, newNode);
+  //   vFile.info('mermaid link replaced with div', position, PLUGIN_NAME);
+  // } catch (error) {
+  //   vFile.message(error, position, PLUGIN_NAME);
+  //   return node;
+  // }
 
   return node;
 }
