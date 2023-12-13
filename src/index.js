@@ -88,9 +88,10 @@ function replaceLinkWithEmbedded(node, index, parent, vFile) {
  * @param {object}  ast
  * @param {vFile}   vFile
  * @param {boolean} isSimple
+ * @param {string} theme
  * @return {function}
  */
-function visitCodeBlock(ast, vFile, isSimple) {
+function visitCodeBlock(ast, vFile, isSimple, theme) {
   return visit(ast, 'code', (node, index, parent) => {
     const { lang, value, position } = node;
     const destinationDir = getDestinationDir(vFile);
@@ -111,7 +112,7 @@ function visitCodeBlock(ast, vFile, isSimple) {
     } else {
       let graphSvgFilename;
       try {
-        graphSvgFilename = render(value, destinationDir);
+        graphSvgFilename = render(value, destinationDir, theme);
 
         vFile.info(`${lang} code block replaced with graph`, position, PLUGIN_NAME);
       } catch (error) {
@@ -183,6 +184,7 @@ function visitImage(ast, vFile, isSimple) {
  */
 function mermaid(options = {}) {
   const simpleMode = options.simple || false;
+  const theme = options.theme || 'default';
 
   /**
    * @param {object} ast MDAST
@@ -191,7 +193,7 @@ function mermaid(options = {}) {
    * @return {object}
    */
   return function transformer(ast, vFile, next) {
-    visitCodeBlock(ast, vFile, simpleMode);
+    visitCodeBlock(ast, vFile, simpleMode, theme);
     visitLink(ast, vFile, simpleMode);
     visitImage(ast, vFile, simpleMode);
 

@@ -22,7 +22,7 @@ describe('remark-mermaid utils', () => {
     let renderedGraphFile;
 
     try {
-      renderedGraphFile = render(mermaidExample, runtimeDir);
+      renderedGraphFile = render(mermaidExample, runtimeDir, 'default');
     } catch (err) {
       console.error(err.message);
     }
