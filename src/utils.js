@@ -12,9 +12,10 @@ const PLUGIN_NAME = 'remark-mermaid';
  *
  * @param  {string} source
  * @param  {string} destination
+ * @param  {string} theme
  * @return {string}
  */
-function render(source, destination) {
+function render(source, destination, theme) {
   const unique = crypto.createHmac('sha1', PLUGIN_NAME).update(source).digest('hex');
   const mmdcExecutable = which.sync('mmdc');
   const mmdPath = path.join(destination, `${unique}.mmd`);
@@ -25,7 +26,7 @@ function render(source, destination) {
   fs.outputFileSync(mmdPath, source);
 
   // Invoke mermaid.cli
-  execSync(`${mmdcExecutable} -i ${mmdPath} -o ${svgPath} -b transparent`);
+  execSync(`${mmdcExecutable} -i ${mmdPath} -o ${svgPath} -t ${theme} -b transparent`);
 
   // Clean up temporary file
   fs.removeSync(mmdPath);
